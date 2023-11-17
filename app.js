@@ -7,9 +7,25 @@ app.use(express.urlencoded({extended: true}));
 
 app.get("/", (req, res) => res.type('html').send(html));
 
-app.get('/req', (req, res) => {
-    console.log("Just got a request!")
-    res.send('Yo!')
+app.get('/meunome', (req, res) => {
+  console.log("Request /meunome!");
+  res.send(`<h1 style="text-align: center;">Meu nome é Erick Amorim ;-)!</h1>`);
+})
+
+app.get('/tico', (req, res) => {
+  console.log("Request /tico sucessfully!");
+  res.send(`<h1 style="text-align: center;">Teco!</h1>`);
+})
+
+let pokemons = { pokemons: ["Pikachu","Butterfree","Pidgeot","Bulbasaur","Charizard","Squirtle","Kingler","Primeape","Muk","Tauros"]}
+app.get('/pokemons', (req, res) => {
+      console.log("Request /pokemons sucessfully!");
+      res.send(pokemons.pokemons);
+})
+
+app.post('/series', (req, res) => {
+  console.log("Request /series sucessfully!");
+  res.send('<ul style="text-align: center;><li style="list-style: none;>Game Of Thrones</li><li style="list-style: none;>Tate no Yuusha</li><li style="list-style: none;>Diários de um Vampiro</li></ul>');
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
